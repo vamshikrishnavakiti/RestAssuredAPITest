@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Restfull booker API">
+	<test verbose="2" preserve-order="true"
+		name="C:/Users/vamshikrishna.v/eclipse-workspace/RestAssuredAPITest">
+		<!--<classes>
+
+			&lt;!&ndash; <class name="org.example.Lab1.lab261" /> &ndash;&gt;
+
+			<class name ="EX_22062024.CRUD.POST.lab270"></class>
+
+		</classes>-->
+		<packages>
+			<package name="EX_22062024.CRUD.*"/>
+		</packages>
+	</test>
+</suite>	
