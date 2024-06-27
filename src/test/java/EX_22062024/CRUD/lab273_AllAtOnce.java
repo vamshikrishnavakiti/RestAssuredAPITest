@@ -8,6 +8,7 @@ import io.restassured.response.ValidatableResponse;
 import io.restassured.specification.RequestSpecification;
 import org.hamcrest.Matchers;
 import org.junit.Assert;
+import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -18,7 +19,7 @@ public class lab273_AllAtOnce {
     ValidatableResponse validatableResponse;
     Response response;
 
-   @BeforeTest
+   @BeforeSuite
     public void getToken(){
    String payload ="{\n" +
            "    \"username\" : \"admin\",\n" +
@@ -134,7 +135,7 @@ public class lab273_AllAtOnce {
         Assert.assertEquals(lastNameJSONPathExtracted,"Brown");
         Assert.assertEquals(totalPriceJSONPathExtracted,"111");
 
-
+        //4)
 
     }
 
