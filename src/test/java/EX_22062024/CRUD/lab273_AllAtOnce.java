@@ -11,6 +11,7 @@ import org.junit.Assert;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+import static org.assertj.core.api.Assertions.*;
 
 public class lab273_AllAtOnce {
     String token;
@@ -104,7 +105,7 @@ public class lab273_AllAtOnce {
 
         validatableResponse.statusCode(200);
         String firstNameResponse=response.then().log().all().extract().path("bookingid");
-       Assert.assertEquals(firstNameResponse,"Vamshi",);
+         Assert.assertEquals(firstNameResponse,"Vamshi");
 
 
        String fullResponseJsonString= response.toString();
@@ -135,7 +136,14 @@ public class lab273_AllAtOnce {
         Assert.assertEquals(lastNameJSONPathExtracted,"Brown");
         Assert.assertEquals(totalPriceJSONPathExtracted,"111");
 
-        //4)
+        //4) AssertJ Matcher
+ assertThat(firstNameJSONPathExtracted)
+         .isEqualTo("Vamshi")
+         .isNotBlank().isNotEmpty();
+
+ assertThat(totalPriceJSONPathExtracted).isNotZero().isNotNegative();
+
+
 
     }
 
