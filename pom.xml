@@ -68,6 +68,19 @@
       <version>3.25.1</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+
+      <groupId>org.testng</groupId>
+      <artifactId>reportng</artifactId>
+      <version>1.2.2</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.github.javafaker</groupId>
+      <artifactId>javafaker</artifactId>
+      <version>1.0.2</version>
+    </dependency>
+
   </dependencies>
 
   <build>

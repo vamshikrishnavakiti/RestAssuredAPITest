@@ -1,14 +1,2 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Restfull booker API">
-	<test verbose="2" preserve-order="true"
-		name="C:/Users/vamshikrishna.v/eclipse-workspace/RestAssuredAPITest">
-		<classes>
-
-			<!-- <class name="org.example.Lab1.lab261" /> -->
-			<class name ="TestNgDemo.lab262"></class>
-			<class name ="TestNgDemo.lab261"></class>
-
-		</classes>
-	</test>
-</suite>	
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd"><suite name="All Test Suite"><test verbose="2" preserve-order="true" name="C:/Users/vamshikrishna.v/eclipse-workspace/RestAssuredAPITest/src/test/java/EX_25062024_TestNGPriority"><classes><class name="EX_25062024_TestNGPriority.lab274"><methods><include name="testMethod1"/><include name="testMethod2"/><include name="testMethod3"/><include name="testMethod4"/></methods></class><class name="EX_25062024_TestNGPriority.lab275"><methods><include name="testMethod1"/><include name="testMethod2"/><include name="testMethod3"/><include name="testMethod4"/></methods></class></classes></test></suite>

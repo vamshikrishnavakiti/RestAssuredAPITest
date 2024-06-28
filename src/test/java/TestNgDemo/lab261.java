@@ -20,7 +20,7 @@ public class lab261 {
 		.baseUri("http://restful-booker.herokuapp.com")
 		.basePath("/ping")
 		.when().get().
-		then().statusCode(201);
+		then().statusCode(200);
 	}
 
 
