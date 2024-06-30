@@ -1,5 +1,7 @@
 package EX_22062024.CRUD.POST;
 
+import com.github.javafaker.Faker;
+import io.qameta.allure.Description;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
@@ -9,17 +11,28 @@ import org.testng.annotations.Test;
 
 public class lab270 {
     // NON BDD Style
-    @Test
-    public void createBookingNonBDDStyle(){
-        //Post Request
-        // Url
-        // Body/Payload - Json
-        // Header - Content Type
+    RequestSpecification r = RestAssured
+            .given();
 
-        String Base_url="https://restful-booker.herokuapp.com";
-        String Base_Path ="/booking";
-        String payload ="{\n" +
-                "    \"firstname\" :\"Jim\" ,\n" +
+    Response response;
+
+    ValidatableResponse validatableResponse;
+
+
+    @Description("TC#1 - Verify that create booking is working with valid payload")
+    @Test
+    public void testNonBDDStylePOSTPositive() {
+
+        String BASE_URL = "https://restful-booker.herokuapp.com";
+        String BASE_PATH = "/booking";
+        Faker faker = new Faker();
+        String firstName = faker.name().firstName();
+
+        System.out.println(firstName);
+
+
+        String payload = "{\n" +
+                "    \"firstname\" : \""+firstName+"\",\n" +
                 "    \"lastname\" : \"Brown\",\n" +
                 "    \"totalprice\" : 111,\n" +
                 "    \"depositpaid\" : true,\n" +
@@ -30,25 +43,50 @@ public class lab270 {
                 "    \"additionalneeds\" : \"Breakfast\"\n" +
                 "}";
 
-        // NON-BDD Style
-  //Given
-        RequestSpecification rs = RestAssured
-                .given();
+        r.baseUri(BASE_URL);
+        r.basePath(BASE_PATH);
+        r.contentType(ContentType.JSON).log().all();
+        r.body(payload);
 
-        rs.baseUri(Base_url);
-        rs.basePath(Base_Path);
-        rs.contentType(ContentType.JSON).log().all();
-        rs.body(payload);
-
-//When
-        Response response = rs.when().log().all().post();
-         String responseString = response.asString();
+        response = r.when().log().all().post();
+        String responseString = response.asString();
         System.out.println(responseString);
-// Then
-        ValidatableResponse ValidatableResponse = response.then();
-        ValidatableResponse.statusCode(200);
+
+
+        validatableResponse = response.then();
+        validatableResponse.statusCode(200);
+
+
+
 
 
     }
 
-}
+    @Description("TC#2 - Verify that create booking not working, with 500 Error")
+    @Test
+    public void testNonBDDStylePOSTNegative() {
+
+        String BASE_URL = "https://restful-booker.herokuapp.com";
+        String BASE_PATH = "/booking";
+        String payload = "{}";
+
+        r.baseUri(BASE_URL);
+        r.basePath(BASE_PATH);
+        r.contentType(ContentType.JSON).log().all();
+        r.body(payload);
+
+        response = r.when().log().all().post();
+        String responseString = response.asString();
+        System.out.println(responseString);
+
+
+        validatableResponse = response.then();
+        validatableResponse.statusCode(500);
+
+
+
+
+    }
+    }
+
+
